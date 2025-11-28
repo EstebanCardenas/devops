@@ -1,7 +1,7 @@
 aws ecs create-service \
     --cluster another-bat-kx41n4 \
     --service-name devops-fargate-task-service-123 \
-    --task-definition devops-fargate-task:2 \
+    --task-definition devops-fargate-task:51 \
     --desired-count 1 \
     --launch-type FARGATE \
     --deployment-controller type=CODE_DEPLOY \

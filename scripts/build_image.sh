@@ -1,1 +1,1 @@
-docker build -t blacklists:$1 .
+docker build -t devops_app:$1 .
