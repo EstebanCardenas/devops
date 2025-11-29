@@ -33,7 +33,6 @@ class BlackListsResource(Resource):
         )
         if validations_result:
             raise BadRequest(validations_result["message"])
-            return validations_result, 400
 
         try:
             blocked_email = BlockedEmail(
