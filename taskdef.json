@@ -1,24 +1,28 @@
 {
-    "executionRoleArn": "arn:aws:iam::683745400026:role/ecsTaskExecutionRole",
-    "containerDefinitions": [
+  "executionRoleArn": "arn:aws:iam::683745400026:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "devops-app",
+      "image": "<IMAGE1_NAME>",
+      "essential": true,
+      "portMappings": [
         {
-            "name": "devops-app",
-            "image": "<IMAGE1_NAME>",
-            "essential": true,
-            "portMappings": [
-                {
-                    "hostPort": 5000,
-                    "containerPort": 5000,
-                    "protocol": "tcp"
-                }
-            ]
+          "hostPort": 5000,
+          "containerPort": 5000,
+          "protocol": "tcp"
         }
-    ],
-    "requiresCompatibilities": [
-        "FARGATE"
-    ],
-    "networkMode": "awsvpc",
-    "cpu": "512",
-    "memory": "1024",
-    "family": "devops-fargate-task"
+      ],
+      "secrets": [
+        {
+          "name": "NEW_RELIC_LICENSE_KEY",
+          "valueFrom": "arn:aws:secretsmanager:us-east-1:683745400026:secret:new-relic-license-key-I7u1L0"
+        }
+      ]
+    }
+  ],
+  "requiresCompatibilities": ["FARGATE"],
+  "networkMode": "awsvpc",
+  "cpu": "512",
+  "memory": "1024",
+  "family": "devops-fargate-task"
 }

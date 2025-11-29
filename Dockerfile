@@ -12,7 +12,7 @@ EXPOSE 5000
 ENV NEW_RELIC_APP_NAME="DevOps-Project"
 ENV NEW_RELIC_LOG="stdout"
 ENV NEW_RELIC_DISTRIBUTED_TRACING_ENABLED="true"
-ENV NEW_RELIC_LICENSE_KEY=""
+# NEW_RELIC_LICENSE_KEY is provided via ECS task definition (secrets or environment)
 ENV NEW_RELIC_LOG_LEVEL="info"
 
 # Log forwarding
