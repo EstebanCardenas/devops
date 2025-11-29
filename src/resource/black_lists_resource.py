@@ -6,6 +6,7 @@ from src.models import session, BlockedEmail
 from flask_jwt_extended import jwt_required, verify_jwt_in_request
 from flask_jwt_extended.exceptions import NoAuthorizationError, JWTDecodeError
 from jwt.exceptions import DecodeError
+from werkzeug.exceptions import BadRequest
 
 
 class BlackListsResource(Resource):
@@ -31,6 +32,7 @@ class BlackListsResource(Resource):
             email, app_uuid, blocked_reason
         )
         if validations_result:
+            raise BadRequest(validations_result["message"])
             return validations_result, 400
 
         try:
